@@ -36,6 +36,8 @@ public class ClientProxy extends CommonProxy {
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
         registerItemModel(Items.nfpa704, new ModelResourceLocation(Items.nfpa704.getRegistryName()+"_teisr", "inventory"));
+        registerItemModel(Items.ghs, new ModelResourceLocation(Items.ghs.getRegistryName()+"_teisr", "inventory"));
+
     }
 
     @SideOnly(Side.CLIENT)

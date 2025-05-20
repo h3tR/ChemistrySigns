@@ -41,8 +41,8 @@ public class DiamondSignBlock extends Block {
     );
 
 
-    public DiamondSignBlock(Material materialIn) {
-        super(materialIn);
+    public DiamondSignBlock() {
+        super(Material.IRON);
         this.setDefaultState(this.blockState.getBaseState().withProperty(BlockHorizontal.FACING, EnumFacing.NORTH));
     }
 
@@ -58,6 +58,20 @@ public class DiamondSignBlock extends Block {
         ModelLoader.setCustomStateMapper(this, ignoreState);
     }
 
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
+    {
+        EnumFacing enumfacing = state.getValue(BlockHorizontal.FACING);
+
+        if (!worldIn.getBlockState(pos.offset(enumfacing.getOpposite())).getMaterial().isSolid())
+        {
+            this.dropBlockAsItem(worldIn, pos, state, 0);
+            worldIn.setBlockToAir(pos);
+        }
+
+        super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
+    }
+
+
     @Override
     public boolean isBlockNormalCube(IBlockState blockState) {
         return false;
@@ -68,6 +82,7 @@ public class DiamondSignBlock extends Block {
     {
         return false;
     }
+
 
     @Override
     public boolean isOpaqueCube(IBlockState blockState) {

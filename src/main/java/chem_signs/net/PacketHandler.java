@@ -1,5 +1,6 @@
 package chem_signs.net;
 
+import chem_signs.ghs.CPacketUpdateGHS;
 import chem_signs.nfpa704.CPacketUpdateNFPA704;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -25,5 +26,7 @@ public class PacketHandler {
     public static void registerMessages() {
         // Register messages which are sent from the client to the server here:
         INSTANCE.registerMessage(CPacketUpdateNFPA704.Handler.class, CPacketUpdateNFPA704.class, nextID(), Side.SERVER);
+        INSTANCE.registerMessage(CPacketUpdateGHS.Handler.class, CPacketUpdateGHS.class, nextID(), Side.SERVER);
+
     }
 }

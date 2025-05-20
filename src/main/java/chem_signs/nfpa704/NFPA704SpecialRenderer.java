@@ -2,7 +2,6 @@ package chem_signs.nfpa704;
 
 import chem_signs.Tags;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -54,7 +53,8 @@ public class NFPA704SpecialRenderer extends TileEntitySpecialRenderer<NFPA704Til
         Minecraft.getMinecraft().getTextureManager().bindTexture(GLYPHS);
         GlStateManager.disableLighting();
         GlStateManager.enableBlend();
-        GlStateManager.color(1f, 1f, 1f, 1f);
+        GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        GlStateManager.color(1f,1f,1f, 1f);
 
         //Fire Hazard
         GlStateManager.pushMatrix();

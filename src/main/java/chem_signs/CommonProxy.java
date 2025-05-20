@@ -1,5 +1,8 @@
 package chem_signs;
 
+import chem_signs.ghs.GHSBlock;
+import chem_signs.ghs.GHSItemBlock;
+import chem_signs.ghs.GHSTileEntity;
 import chem_signs.net.PacketHandler;
 import chem_signs.nfpa704.NFPA704Block;
 import chem_signs.nfpa704.NFPA704ItemBlock;
@@ -25,10 +28,10 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent event) {
-        NetworkRegistry.INSTANCE.registerGuiHandler(ChemistrySigns.instance, new NFPA704Block.GuiProxy());
+        NetworkRegistry.INSTANCE.registerGuiHandler(ChemistrySigns.instance, new GuiProxy());
 
         GameRegistry.registerTileEntity(NFPA704TileEntity.class, Tags.MOD_ID + "_nfpa704");
-      //  GameRegistry.registerTileEntity(GHSTileEntity.class, Tags.MOD_ID + "_ghs");
+        GameRegistry.registerTileEntity(GHSTileEntity.class, Tags.MOD_ID + "_ghs");
     }
 
     public void postInit(FMLPostInitializationEvent event) {
@@ -37,13 +40,13 @@ public class CommonProxy {
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
         event.getRegistry().register(new NFPA704Block());
-        //event.getRegistry().register(new GHSBlock());
+        event.getRegistry().register(new GHSBlock());
     }
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         event.getRegistry().register(new NFPA704ItemBlock(Blocks.nfpa704).setRegistryName(Blocks.nfpa704.getRegistryName()));
-        //event.getRegistry().register(new ItemBlock(Blocks.ghs).setRegistryName(Blocks.ghs.getRegistryName()));
+        event.getRegistry().register(new GHSItemBlock(Blocks.ghs).setRegistryName(Blocks.ghs.getRegistryName()));
 
     }
 

@@ -4,7 +4,6 @@ import chem_signs.ChemistrySigns;
 import chem_signs.Items;
 import chem_signs.diamond_sign.DiamondSignBlock;
 import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -15,7 +14,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -27,7 +25,6 @@ public class NFPA704Block extends DiamondSignBlock implements ITileEntityProvide
     public static final int GUI_ID = 1;
 
     public NFPA704Block() {
-        super(Material.IRON);
         setRegistryName("nfpa704");
         setTranslationKey("chem_signs.block.nfpa704");
         setHarvestLevel("pickaxe",0);
@@ -60,23 +57,5 @@ public class NFPA704Block extends DiamondSignBlock implements ITileEntityProvide
         return new NFPA704TileEntity();
     }
 
-    public static class GuiProxy implements IGuiHandler {
 
-        @Nullable
-        @Override
-        public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-            return null;
-        }
-
-        @Override
-        public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-            BlockPos pos = new BlockPos(x, y, z);
-            TileEntity te = world.getTileEntity(pos);
-            if (te instanceof NFPA704TileEntity) {
-                NFPA704TileEntity nfpa704TileEntity = (NFPA704TileEntity) te;
-                return new NFPA704ContentSelectorGUI(nfpa704TileEntity);
-            }
-            return null;
-        }
-    }
 }

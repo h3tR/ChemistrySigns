@@ -72,7 +72,7 @@ public class NFPA704ContentSelectorGUI extends GuiScreen {
             this.addButton(selector.prev);
         }
 
-        this.addButton(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 120, I18n.format("gui.done")){
+        this.addButton(new GuiButton(8, this.width / 2 - 100, this.height * 3 / 4, I18n.format("gui.done")){
             @Override
             public void mouseReleased(int mouseX, int mouseY) {
                 NFPA704ContentSelectorGUI.this.mc.displayGuiScreen(null);
@@ -119,10 +119,10 @@ public class NFPA704ContentSelectorGUI extends GuiScreen {
         BufferBuilder buffer = tess.getBuffer();
 
         buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
-        buffer.pos(centerX , centerY + BACKGROUND_SIZE / 2, 0).tex(0, .5).endVertex(); // Bottom-left
-        buffer.pos(centerX + BACKGROUND_SIZE / 2, centerY, 0).tex(.5, .5).endVertex(); // Bottom-right
-        buffer.pos(centerX, centerY - BACKGROUND_SIZE / 2, 0).tex(.5, 0).endVertex(); // Top-right
-        buffer.pos(centerX - BACKGROUND_SIZE / 2, centerY , 0).tex(0, 0).endVertex(); // Top-left
+        buffer.pos(centerX , centerY + (double) BACKGROUND_SIZE / 2, 0).tex(0, .5).endVertex(); // Bottom-left
+        buffer.pos(centerX + (double) BACKGROUND_SIZE / 2, centerY, 0).tex(.5, .5).endVertex(); // Bottom-right
+        buffer.pos(centerX, centerY - (double) BACKGROUND_SIZE / 2, 0).tex(.5, 0).endVertex(); // Top-right
+        buffer.pos(centerX - (double) BACKGROUND_SIZE / 2, centerY , 0).tex(0, 0).endVertex(); // Top-left
         tess.draw();
         GlStateManager.popMatrix();
 

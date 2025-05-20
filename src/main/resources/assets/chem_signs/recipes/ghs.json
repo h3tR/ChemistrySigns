@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "iri",
+    "rpr",
+    "iri"
+  ],
+  "key": {
+    "i": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "r": {
+      "type": "forge:ore_dict",
+      "ore": "dyeRed"
+    },
+    "p": {
+      "item": "minecraft:paper"
+    }
+  },
+  "result":
+  {
+    "item": "chem_signs:ghs",
+    "count": 16
+  }
+}
