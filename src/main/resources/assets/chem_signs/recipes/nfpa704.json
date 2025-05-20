@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "iri",
+    "bpy",
+    "iwi"
+  ],
+  "key": {
+    "i": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "r": {
+      "type": "forge:ore_dict",
+      "ore": "dyeRed"
+    },
+    "b": {
+      "type": "forge:ore_dict",
+      "ore": "dyeBlue"
+    },
+    "p": {
+      "item": "minecraft:paper"
+    },
+    "y": {
+      "type": "forge:ore_dict",
+      "ore": "dyeYellow"
+    },
+    "w": {
+      "type": "forge:ore_dict",
+      "ore": "dyeWhite"
+    }
+  },
+  "result":
+  {
+    "item": "chem_signs:nfpa704",
+    "count": 16
+  }
+}

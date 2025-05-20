@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "chem_signs:blocks/nfpa704/sign"
+  }
+}

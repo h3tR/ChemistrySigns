@@ -20,7 +20,6 @@ apply from: 'gradle/scripts/helpers.gradle'
 
 // Early Assertions
 assertProperty 'mod_version'
-assertProperty 'root_package'
 assertProperty 'mod_id'
 assertProperty 'mod_name'
 
@@ -42,7 +41,7 @@ setDefaultProperty 'extra_tweak_classes', false, ''
 setDefaultProperty 'change_minecraft_sources', false, false
 
 version = propertyString('mod_version')
-group = propertyString('root_package')
+group = propertyString('mod_id')
 
 base {
     archivesName.set(propertyString('mod_id'))
@@ -89,6 +88,7 @@ minecraft {
         args << '-Dmixin.checks.interfaces=true'
         args << '-Dmixin.debug.export=true'
     }
+    args << '-Dforge.logging.markers=REGISTRIES,REGISTRYDUMP'
     extraRunJvmArguments.addAll(args)
     extraRunJvmArguments.addAll(propertyStringList('extra_jvm_args'))
 
