@@ -4,7 +4,6 @@
 import com.gtnewhorizons.retrofuturagradle.mcp.InjectTagsTask
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.gradle.ext.Gradle
-
 plugins {
     id 'java'
     id 'java-library'
@@ -104,8 +103,25 @@ minecraft {
 
 repositories {
     maven {
-        name 'CleanroomMC Maven'
+        name = 'Curse Maven'
+        url = 'https://www.cursemaven.com'
+        // url = 'https://beta.cursemaven.com'
+    }
+    maven {
+        name 'Cleanroom Maven'
         url 'https://maven.cleanroommc.com'
+    }
+    maven {
+        name 'BlameJared Maven'
+        url 'https://maven.blamejared.com'
+    }
+    maven {
+        name 'GTNH Maven'
+        url 'https://nexus.gtnewhorizons.com/repository/public/'
+    }
+    maven {
+        name 'GTCEu Maven'
+        url 'https://maven.gtceu.com'
     }
 }
 
@@ -144,6 +160,15 @@ dependencies {
         testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
         testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     }
+
+    implementation 'mezz.jei:jei_1.12.2:4.16.1.302'
+    //noinspection DependencyNotationArgument
+    implementation rfg.deobf('curse.maven:top-245211:2667280') // TOP 1.4.28
+    //noinspection DependencyNotationArgument
+    implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:5519022") // GTCEu 2.8.10 beta
+    //noinspection DependencyNotationArgument
+    implementation rfg.deobf('curse.maven:codechicken-lib-1-8-242818:2779848') // CCL 3.2.3.358
+
 }
 
 apply from: 'gradle/scripts/dependencies.gradle'

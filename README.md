@@ -6,7 +6,7 @@
     <a href="https://www.curseforge.com/minecraft/mc-mods/chemistry-signs"><img src="https://cf.way2muchnoise.eu/1269800.svg?badge_style=for_the_badge" alt="CurseForge"></a>
 </h1>
 
-## Chemistry Signs
+# Chemistry Signs
 
 This mod adds signs related to chemistry.
 

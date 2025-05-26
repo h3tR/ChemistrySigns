@@ -2,6 +2,7 @@ package chem_signs.ghs;
 
 import chem_signs.ChemistrySigns;
 import chem_signs.Items;
+import chem_signs.compat.GTCompat;
 import chem_signs.diamond_sign.DiamondSignBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
@@ -11,9 +12,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -50,6 +54,17 @@ public class GHSBlock extends DiamondSignBlock implements ITileEntityProvider {
         if (placer instanceof EntityPlayer ){
             ((EntityPlayer)placer).openGui(ChemistrySigns.instance, GUI_ID, worldIn, pos.getX(), pos.getY(), pos.getZ());
         }
+    }
+
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+
+        if(Loader.isModLoaded("gregtech") && GTCompat.UseScrewdriver(playerIn,hand)){
+            playerIn.openGui(ChemistrySigns.instance, GUI_ID, worldIn, pos.getX(), pos.getY(), pos.getZ());
+            return true;
+        }
+
+        return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
     }
 
     @Nullable
